@@ -28,16 +28,18 @@ describe("login", () => {
 		but as soon as it gets to the GraphQL mutation, it can't find a matching operation in `handlers.js`
 		and it crashes with:
 
-		error: ApolloError: No more mocked responses for the query: mutation Login($username: String!) {
-			user {
-				id
-				firstName
-				lastName
-				__typename
+			error: ApolloError: No more mocked responses for the query: mutation Login($username: String!) {
+				user {
+					id
+					firstName
+					lastName
+					__typename
+				}
 			}
-		}
+			
+			Expected variables: {"username":"brody"}
 		
-		Expected variables: {"username":"brody"}
+		In fact, it seems that it never even hits the mutation...? See `handlers.js`
 		*/
 
 		expect(await screen.findByText("Maverick")).toBeInTheDocument();
