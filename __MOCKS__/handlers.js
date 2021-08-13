@@ -2,6 +2,7 @@ import { rest, graphql } from "msw";
 
 export const handlers = [
 	graphql.mutation("Login", (req, res, ctx) => {
+		console.log("in mutation");
 		const { username } = req.variables;
 
 		if (username === "non-existing") {
