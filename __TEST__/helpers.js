@@ -6,9 +6,7 @@ import { handlers } from "../__MOCKS__/handlers";
 export const server = setupServer(...handlers);
 
 export const renderWithProviders = (ui) => {
-	console.log(`ui`, ui);
 	const Wrapper = () => <MockedProvider>{ui}</MockedProvider>;
-	console.log(`Wrapper`, Wrapper);
 
 	return render(<Wrapper />);
 };
