@@ -5,7 +5,7 @@ import "@testing-library/jest-dom/extend-expect";
 import user from "@testing-library/user-event";
 import { renderWithProviders, server } from "./helpers";
 
-describe("test", () => {
+describe("login", () => {
 	const renderComponent = () => renderWithProviders(<LoginForm />);
 
 	beforeAll(() => server.listen);

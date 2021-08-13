@@ -9,10 +9,10 @@ import { LoginForm } from "../components/login-form";
 // 	worker.start();
 // }
 
-const Test = () => (
+const Login = () => (
 	<ApolloProvider client={client}>
 		<LoginForm />
 	</ApolloProvider>
 );
 
-export default Test;
+export default Login;
