@@ -1,12 +1,16 @@
 import { LoginForm } from "../components/login-form";
 
-import { screen } from "@testing-library/react";
+import { screen, render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import user from "@testing-library/user-event";
 import { renderWithProviders, server } from "./helpers";
+import { ApolloProvider } from "@apollo/client";
+import { client } from '../components/apollo-client';
 
 describe("login", () => {
-	const renderComponent = () => renderWithProviders(<LoginForm />);
+	const renderComponent = () => render(<ApolloProvider client={client}>
+		<LoginForm />
+	</ApolloProvider>);
 
 	beforeAll(() => server.listen);
 
