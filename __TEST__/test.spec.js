@@ -18,10 +18,27 @@ describe("test", () => {
 	afterAll(() => server.close);
 
 	test("should show user data after user submits form", async () => {
-		const { getByText } = renderComponent();
+		renderComponent();
 
 		user.type(await screen.findByLabelText("Username:"), "brody");
 		user.click(await screen.findByText("Submit"));
+
+		/*
+		So far, so good! The console logs show that the form is successfully submitted with the expected input,
+		but as soon as it gets to the GraphQL mutation, it can't find a matching operation in `handlers.js`
+		and it crashes with:
+
+		error: ApolloError: No more mocked responses for the query: mutation Login($username: String!) {
+			user {
+				id
+				firstName
+				lastName
+				__typename
+			}
+		}
+		
+		Expected variables: {"username":"brody"}
+		*/
 
 		expect(await screen.findByText("Maverick")).toBeInTheDocument();
 	});
