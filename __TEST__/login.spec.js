@@ -8,26 +8,29 @@ import { ApolloProvider } from "@apollo/client";
 import { client } from "../components/apollo-client";
 
 describe("login", () => {
-	const renderComponent = () =>
-		render(
-			<ApolloProvider client={client}>
-				<LoginForm />
-			</ApolloProvider>
-		);
+	// const renderComponent = () =>
+	// 	render(
+	// 		<ApolloProvider client={client}>
+	// 			<LoginForm />
+	// 		</ApolloProvider>
+	// 	);
 
+	// for this server.listen to work, this beforeAll HAS to have a full block,
+	// unlike where we can have `beforeAll(() => RTL.cleanup)` and that works fine
 	beforeAll(() => {
-		server.listen({ onUnhandledRequest: "error" });
+		server.listen();
 	});
 
 	beforeEach(() => {
 		server.resetHandlers();
-		server.printHandlers();
 	});
 
-	afterAll(() => server.close);
+	afterAll(() => {
+		server.close();
+	});
 
 	test("should show user data after user submits form", async () => {
-		renderComponent();
+		renderWithProviders(<LoginForm />);
 
 		user.type(await screen.findByLabelText("Username:"), "brody");
 		user.click(await screen.findByText("Submit"));

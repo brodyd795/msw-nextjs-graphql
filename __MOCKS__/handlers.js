@@ -2,12 +2,6 @@ import { rest, graphql } from "msw";
 
 export const handlers = [
 	graphql.mutation("Login", (req, res, ctx) => {
-		/*
-		I expect to see this log in the console, when running the test, but it never shows up
-		 
-		It just tells me "networkError: Error: No more mocked responses for the query: mutation Login($username: String!)"
-		*/
-		console.log("in mutation");
 		const { username } = req.variables;
 
 		if (username === "non-existing") {

@@ -20,7 +20,6 @@ export const LoginForm = () => {
 			username,
 		},
 	});
-	console.log({ data, loading, error });
 
 	// Whenever we change our username input's value
 	// update the corresponding state's value.
@@ -34,7 +33,6 @@ export const LoginForm = () => {
 			// Prevent the default behavior, as we don't want
 			// for our page to reload upon submit.
 			event.preventDefault();
-			console.log(`username`, username);
 
 			logIn({
 				variables: {
