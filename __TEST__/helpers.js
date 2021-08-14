@@ -1,7 +1,7 @@
 import { ApolloProvider } from "@apollo/client";
 import { render } from "@testing-library/react";
 import { setupServer } from "msw/node";
-import { handlers } from "../__MOCKS__/handlers";
+import { handlers } from "./mocks/handlers";
 import { client } from "../components/apollo-client";
 
 export const server = setupServer(...handlers);
